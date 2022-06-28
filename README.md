@@ -5,8 +5,9 @@ This project takes the FIFA dataset and uses the attributes in FIFA to determine
 - Python
 - Streamlit
 - Keras
-- 
--
+- Pandas
+- Shap
+- Sklearn
 
 # Setup and Running
 - Install streamlit onto your local machine 
