@@ -1,0 +1,9 @@
+scikit-learn
+matplotlib
+numpy
+pandas
+seaborn
+streamlit
+click>=8.0
+prefect
+pre-commit
