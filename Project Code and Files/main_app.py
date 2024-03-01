@@ -9,21 +9,21 @@ from preprocessing.data_preprocessing import (
     cleanupPlayerPositions,
     SplitDataframe,
     get_player_names,
-    selectedDataframe
+    selectedDataframe,
 )
 from models.models import (
     linearRegression,
     knnRegression,
     randomForestRegression,
     decisionTreeRegression,
-    linearSVR
+    linearSVR,
 )
 
 # Add the project root directory to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 # Load the data
-playerNamesDataframe = pd.read_csv(r'C:/Users/msidh/Documents/footballData.csv')
+playerNamesDataframe = pd.read_csv(r"C:/Users/msidh/Documents/footballData.csv")
 
 # Get player names using a function from 'data_preprocessing.py'
 players = get_player_names(playerNamesDataframe)
@@ -39,7 +39,9 @@ goalkeepers_dataframe, outfield_dataframe = SplitDataframe(dataframe)
 # Player selection UI
 st.write("Player you want to find the price for")
 playerName = st.selectbox("Select target player for price prediction", players)
-dataframeForModel = selectedDataframe(playerName, goalkeepers_dataframe, outfield_dataframe)
+dataframeForModel = selectedDataframe(
+    playerName, goalkeepers_dataframe, outfield_dataframe
+)
 
 # Linear Regression
 st.write("Linear Regression Model")
@@ -58,16 +60,25 @@ if st.checkbox("Best K Value"):
 # Random Forest Regression
 st.write("Random Forest Regression Model")
 
-treeValue = st.slider('Random Forest: How many trees do you want the forest to have', 0, 200, 100)  # Default value set to 100
-maxFeatureVal = st.selectbox('Random Forest: What max feature value would you like to use?', ('log2', 'auto', 'sqrt'))
+treeValue = st.slider(
+    "Random Forest: How many trees do you want the forest to have", 0, 200, 100
+)  # Default value set to 100
+maxFeatureVal = st.selectbox(
+    "Random Forest: What max feature value would you like to use?",
+    ("log2", "auto", "sqrt"),
+)
 
-randomForestResult = randomForestRegression(playerName, dataframeForModel, treeValue, maxFeatureVal)
+randomForestResult = randomForestRegression(
+    playerName, dataframeForModel, treeValue, maxFeatureVal
+)
 rfPrice = float(randomForestResult[0])
 st.write(f"The predicted price of {playerName} is €{rfPrice:,.2f}")
 
 # Decision Tree Regression
 st.write("Decision Tree Regression Model")
-depthValue = st.slider('Decision Tree: What tree depth do you want to use', 0, 50, 10)  # Default value set to 10
+depthValue = st.slider(
+    "Decision Tree: What tree depth do you want to use", 0, 50, 10
+)  # Default value set to 10
 
 decisionTreeReg = decisionTreeRegression(playerName, dataframeForModel, depthValue)
 dtPrice = float(decisionTreeReg[0])
@@ -86,7 +97,7 @@ st.write(f"The predicted price of {playerName} is €{svrPrice:,.2f}")
 # sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # import pandas as pd
-# import numpy as np  
+# import numpy as np
 # import streamlit as st
 # import matplotlib.pyplot as plt
 # import seaborn as sns
@@ -106,7 +117,7 @@ st.write(f"The predicted price of {playerName} is €{svrPrice:,.2f}")
 #     selectedDataframe
 # )
 
-# from models.models import (linearRegression, knnRegression, randomForestRegression, decisionTreeRegression, linearSVR)  
+# from models.models import (linearRegression, knnRegression, randomForestRegression, decisionTreeRegression, linearSVR)
 
 
 # # Read the source of the data
@@ -168,5 +179,3 @@ st.write(f"The predicted price of {playerName} is €{svrPrice:,.2f}")
 # linearSVRPrice = linearSVR(playerName, dataframeForModel)
 # svrPrice = float(linearSVRPrice[0]) if isinstance(linearSVRPrice, np.ndarray) else float(linearSVRPrice)
 # st.write(f"The predicted price of {playerName} is €{svrPrice:,.2f}")
-
-

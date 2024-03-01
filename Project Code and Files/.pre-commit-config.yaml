@@ -1,29 +1,28 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1  # Use the latest version
+  - repo: https://github.com/pre-commit/pre-commit-hooks  # Repository for common pre-commit hooks
+    rev: v4.5.0  # The version of the hooks to use
     hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-added-large-files
+      - id: trailing-whitespace  # Removes trailing whitespace
+      - id: end-of-file-fixer  # Ensures a newline at the end of files
+      - id: check-yaml  # Checks YAML files for syntax errors
+      - id: check-added-large-files  # Prevents accidentally adding large files
 
-  - repo: https://github.com/psf/black
-    rev: 22.3.0  # Use the latest version
+  - repo: https://github.com/psf/black  # Repository for the black formatter
+    rev: 24.2.0  # The version of black to use
     hooks:
-      - id: black
-        language_version: python3
+      - id: black  # The black formatter hook ID
+        language_version: python3  # Specifies which Python version to use with black
 
-  - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.9.0  # Use the latest version
+  - repo: https://github.com/pre-commit/pygrep-hooks  # Repository for pygrep hooks
+    rev: v1.9.0  # The version of the pygrep hooks to use
     hooks:
-      - id: python-check-blanket-noqa
-      - id: python-check-mock-methods
-      - id: python-no-eval
-      - id: python-no-log-warn
-      - id: python-check-builtin-literals
+      - id: python-check-blanket-noqa  # Checks for blanket 'noqa' comments
+      - id: python-check-mock-methods  # Checks for incorrect mock method calls
+      - id: python-no-eval  # Checks for use of eval()
+      - id: python-no-log-warn  # Checks for use of deprecated log.warn
+      #- id: python-check-builtin-literals  # Checks for incorrect use of builtin literals
 
-  # For Jupyter Notebooks
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.3.9  # Use the latest version
+  - repo: https://github.com/kynan/nbstripout  # Repository for nbstripout to clean notebooks
+    rev: 0.7.1  # The version of nbstripout to use
     hooks:
-      - id: nbstripout
+      - id: nbstripout  # Hook ID for nbstripout

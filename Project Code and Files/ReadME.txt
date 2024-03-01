@@ -5,4 +5,4 @@ cd into the folder the project is in then run the following prompt in the comman
 Streamlit run ProofOfCOnceptWebApplication.py
 
 
-Please find attached a .csv file with the football dataset 
+Please find attached a .csv file with the football dataset
