@@ -46,63 +46,6 @@ def linearRegression(playerName, dataframe):
 
 
 @st.cache
-def knnRegression(playerName, dataframe):
-    np.random.seed(101)
-    rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
-    dataframeCleaned = removePlayerFromDataframe(playerName, dataframe.copy())
-    train, test = train_test_split(dataframeCleaned, test_size=0.3, random_state=42)
-    x_train = train.drop("value_eur", axis=1)
-    y_train = train["value_eur"]
-    x_test = test.drop("value_eur", axis=1)
-    y_test = test["value_eur"]
-    knn = KNeighborsRegressor()
-    knn.fit(x_train, y_train)
-    predictedValue = knn.predict(rowOfPlayer.drop(["short_name", "value_eur"], axis=1))
-    return predictedValue
-
-
-@st.cache
-def decisionTreeRegression(playerName, dataframe, depthValue):
-    np.random.seed(101)
-    rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
-    dataframeCleaned = removePlayerFromDataframe(playerName, dataframe.copy())
-    train, test = train_test_split(dataframeCleaned, test_size=0.3, random_state=42)
-    x_train = train.drop("value_eur", axis=1)
-    y_train = train["value_eur"]
-    x_test = test.drop("value_eur", axis=1)
-    y_test = test["value_eur"]
-    tree_reg = DecisionTreeRegressor(max_depth=depthValue, random_state=42)
-    tree_reg.fit(x_train, y_train)
-    valueOfPlayer = tree_reg.predict(
-        rowOfPlayer.drop(["short_name", "value_eur"], axis=1)
-    )
-    return valueOfPlayer
-
-
-@st.cache
-def randomForestRegression(playerName, dataframe, treeValue, maxFeatureVal):
-    np.random.seed(101)
-    rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
-    dataframeCleaned = removePlayerFromDataframe(playerName, dataframe.copy())
-
-    train, test = train_test_split(dataframeCleaned, test_size=0.2, random_state=42)
-    x_train = train.drop("value_eur", axis=1)
-    y_train = train["value_eur"]
-    x_test = test.drop("value_eur", axis=1)
-    y_test = test["value_eur"]
-
-    regressor = RandomForestRegressor(
-        n_estimators=treeValue, max_features=maxFeatureVal, random_state=42
-    )
-    regressor.fit(x_train, y_train)
-    predictedValue = regressor.predict(
-        rowOfPlayer.drop(["short_name", "value_eur"], axis=1)
-    )
-
-    return predictedValue
-
-
-@st.cache
 def linearSVR(playerName, dataframe):
     np.random.seed(101)
     rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
