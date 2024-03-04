@@ -15,3 +15,13 @@ This project takes the FIFA dataset and uses the attributes in FIFA to determine
 - Open terminal and go to the repository local
 - run the line "streamlit run ProofOfConceptWebApplication.py"
 - the local server will run and will create a new tab on your browser (allow for some time for the models to run during startup)
+
+
+<!-- To run ProofOfCOnceptWebApplication.py it requires the installation of Streamlit, after installing streamlit
+
+cd into the folder the project is in then run the following prompt in the command prompt
+
+Streamlit run ProofOfCOnceptWebApplication.py
+
+
+Please find attached a .csv file with the football dataset -->
