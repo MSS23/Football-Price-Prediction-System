@@ -46,22 +46,6 @@ def linearRegression(playerName, dataframe):
 
 
 @st.cache
-def linearSVR(playerName, dataframe):
-    np.random.seed(101)
-    rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
-    dataframeCleaned = removePlayerFromDataframe(playerName, dataframe.copy())
-    train, test = train_test_split(dataframeCleaned, test_size=0.3, random_state=42)
-    x_train = train.drop("value_eur", axis=1)
-    y_train = train["value_eur"]
-    x_test = test.drop("value_eur", axis=1)
-    y_test = test["value_eur"]
-    regr = LinearSVR()
-    regr.fit(x_train, y_train)
-    predictedValue = regr.predict(rowOfPlayer.drop(["short_name", "value_eur"], axis=1))
-    return predictedValue
-
-
-@st.cache
 def knnBestValueGraph(x_train, y_train, x_test, y_test):
     rmseValues = []
     for k in range(1, 51):
@@ -70,7 +54,7 @@ def knnBestValueGraph(x_train, y_train, x_test, y_test):
         pred = model.predict(x_test)
         error = sqrt(mean_squared_error(y_test, pred))
         rmseValues.append(error)
-        print("RMSE value for k= ", k, "is:", error)
+        # print("RMSE value for k= ", k, "is:", error)
 
 
 @st.cache
@@ -87,7 +71,7 @@ def knnRegression(playerName, dataframe):
 
     x_dimension = np.arange(1, 100)
     params = {"n_neighbors": x_dimension, "weights": ["uniform", "distance"]}
-    knn = KNeighborsRegressor()
+    knn = KNeighborsRegressor(n_jobs=2)
     model = GridSearchCV(knn, params, cv=5)
     model.fit(x_train, y_train)
 

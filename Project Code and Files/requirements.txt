@@ -8,3 +8,4 @@ click>=8.0
 prefect
 pre-commit
 tornado
+streamlit-authenticator
