@@ -19,11 +19,15 @@ from models.models import (
     linearSVR,
 )
 
-# Add the project root directory to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# # Add the project root directory to the Python path
+# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+st.title("Football Player Price Prediction System")
 
-# Load the data
-playerNamesDataframe = pd.read_csv(r"C:/Users/msidh/Documents/footballData.csv")
+filepath = os.path.join(os.path.dirname(__file__), "data", "footballData.csv")
+playerNamesDataframe = pd.read_csv(filepath)
+
+# # Load the data
+# playerNamesDataframe = pd.read_csv(r"C:/Users/msidh/Documents/footballData.csv")
 
 # Get player names using a function from 'data_preprocessing.py'
 players = get_player_names(playerNamesDataframe)

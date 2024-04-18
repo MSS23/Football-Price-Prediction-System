@@ -27,7 +27,9 @@ from preprocessing.data_preprocessing import (
 )
 
 
-@st.cache
+st.cache_resource
+
+
 def linearRegression(playerName, dataframe):
     np.random.seed(101)
     rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
@@ -45,7 +47,7 @@ def linearRegression(playerName, dataframe):
     return regressionModel
 
 
-@st.cache
+@st.cache_resource
 def knnBestValueGraph(x_train, y_train, x_test, y_test):
     rmseValues = []
     for k in range(1, 30):
@@ -57,7 +59,7 @@ def knnBestValueGraph(x_train, y_train, x_test, y_test):
         # print("RMSE value for k= ", k, "is:", error)
 
 
-@st.cache
+@st.cache_resource
 def knnRegression(playerName, dataframe):
     np.random.seed(101)
     rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
@@ -83,7 +85,7 @@ def knnRegression(playerName, dataframe):
     return model, model.best_params_, predictedValue
 
 
-@st.cache
+@st.cache_resource
 def decisionTreeRegression(playerName, dataframe, depthValue):
     np.random.seed(101)
     rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
@@ -104,7 +106,7 @@ def decisionTreeRegression(playerName, dataframe, depthValue):
     return valueOfPlayer
 
 
-@st.cache
+@st.cache_resource
 def randomForestRegression(playerName, dataframe, treeValue, maxFeatureVal):
     np.random.seed(101)
     rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
@@ -127,7 +129,7 @@ def randomForestRegression(playerName, dataframe, treeValue, maxFeatureVal):
     return predictedValue
 
 
-@st.cache
+@st.cache_resource
 def linearSVR(playerName, dataframe):
     np.random.seed(101)
     rowOfPlayer = removePlayerAndPlayerNamesFromDataframe(playerName, dataframe)
