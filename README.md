@@ -10,7 +10,6 @@ This project takes the FIFA dataset and uses the attributes in FIFA to determine
 - Sklearn
 
 # Setup and Running
-- Install streamlit onto your local machine
 - Download or pull the repo to local device
 - Open terminal and go to the repository local
 - Run pip install -r requirements.txt to get all the packages you require for the project
