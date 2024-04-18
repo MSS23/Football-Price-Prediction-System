@@ -21,7 +21,7 @@ from models.models import (
 
 # # Add the project root directory to the Python path
 # sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-st.title("Football Player Price Prediction System")
+st.title("Football Player Price Prediction System - Dataset 2021")
 
 filepath = os.path.join(os.path.dirname(__file__), "data", "footballData.csv")
 playerNamesDataframe = pd.read_csv(filepath)
@@ -69,7 +69,7 @@ treeValue = st.slider(
 )  # Default value set to 100
 maxFeatureVal = st.selectbox(
     "Random Forest: What max feature value would you like to use?",
-    ("log2", "auto", "sqrt"),
+    ("log2", "sqrt"),
 )
 
 randomForestResult = randomForestRegression(
