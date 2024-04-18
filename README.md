@@ -11,9 +11,9 @@ This project takes the FIFA dataset and uses the attributes in FIFA to determine
 
 # Setup and Running
 - Download or pull the repo to local device
-- Open terminal and go to the repository local
-- Run pip install -r requirements.txt to get all the packages you require for the project
-- cd into the project code and files folder and then run the following command
+- Open terminal and go to the local repository - be in the "Project Code and Files"
+- Run "pip install -r requirements.txt" to get all the packages you require for the project
+- cd into the "Project Code and Files" folder and then run the following command
 - run the line "streamlit run main_app.py"
 - the local server will run and will create a new tab on your browser (allow for some time for the models to run during startup)
 
