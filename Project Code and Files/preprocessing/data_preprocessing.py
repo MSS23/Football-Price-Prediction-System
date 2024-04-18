@@ -94,10 +94,12 @@ def AddingWorkRates(dataframe):
     }
     dataframe = dataframe.replace(cleanup_work_rates)
 
+    path = "C:/Users/msidh/Documents/{file_name}.csv"
     return dataframe
 
 
 def NormaliseData(dataframe):
+    f"figure_min_temp_{dataframe}"
     # Columns that should not be normalized
     columns_not_being_normalised = [
         "short_name",

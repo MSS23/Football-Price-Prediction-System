@@ -48,7 +48,7 @@ def linearRegression(playerName, dataframe):
 @st.cache
 def knnBestValueGraph(x_train, y_train, x_test, y_test):
     rmseValues = []
-    for k in range(1, 51):
+    for k in range(1, 30):
         model = KNeighborsRegressor(n_neighbors=k)
         model.fit(x_train, y_train)
         pred = model.predict(x_test)
