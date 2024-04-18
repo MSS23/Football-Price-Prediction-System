@@ -20,7 +20,7 @@ from models.models import (
 )
 
 # # Add the project root directory to the Python path
-# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 st.title("Football Player Price Prediction System - Dataset 2021")
 
 filepath = os.path.join(os.path.dirname(__file__), "data", "footballData.csv")
